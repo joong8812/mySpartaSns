@@ -44,7 +44,7 @@ def sign_in_view(request):
         if me is not None:
             auth.login(request, me)
             # request.session['user'] = me.username
-            return HttpResponse(me.username)  # 로그인 후 유저네임을 응답한다
+            return redirect('/')  # 로그인 후 유저네임을 응답한다
         else:
             return redirect('/sign-in')
     elif request.method == 'GET':
