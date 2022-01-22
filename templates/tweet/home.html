@@ -26,6 +26,11 @@
                                     <p>
                                     <form action="/tweet/" method="post">
                                         {% csrf_token %}
+                                        {% if error %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ error }}
+                                        </div>
+                                        {% endif %}
                                         <div class="form-group mb-2">
                                             <textarea class="form-control" style="resize: none" name='my-content'
                                                 id="my-content"></textarea>
@@ -63,7 +68,7 @@
                                     <h5 class="mt-0">{{ tw.content }}</h5>
                                 </div>
                                 <div style="text-align: right">
-                                    <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
+                                    <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince}} 전</span>
                                 </div>
                             </div>
                         </div>
